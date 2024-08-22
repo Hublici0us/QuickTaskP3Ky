@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     public float jumpForce = 5;
 
+    private bool isOnGround;
+
     SpriteRenderer playerSprite;
     Rigidbody2D playerRb;
 
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
 
+        
+
     transform.Translate(Vector2.right * horizontal * speed * Time.deltaTime);
         
         if (horizontal >= 0)
@@ -38,9 +42,19 @@ public class PlayerController : MonoBehaviour
             playerSprite.flipX= true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&& isOnGround==true)
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse) ;
+           isOnGround = false ;
+
         }
+       
+
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       isOnGround = true;
+    }
+
 }

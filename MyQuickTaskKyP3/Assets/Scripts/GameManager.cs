@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private bool pausedGame;
 
     public Camera playerCamera;
+    private AudioSource audioSource;
 
     public GameObject pauseScreen;
     private GameObject player;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         pausedGame = false;
         player = GameObject.Find("Player").gameObject;
+        audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f;
         pauseScreen.SetActive(true);
         pausedGame=true;
+        audioSource.pitch = 0.85f;
     }
 
     public void UnpauseGame()
@@ -51,10 +54,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseScreen.SetActive(false);
         pausedGame=false;
+        audioSource.pitch=1.0f;
     }
 
     public void BackToMainMenu()
     {
 
     }
+
+    
 }
