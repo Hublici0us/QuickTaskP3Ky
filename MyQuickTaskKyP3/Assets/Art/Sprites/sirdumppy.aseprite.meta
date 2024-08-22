@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 71dad884e478fdc40b0c76409946e3c2
+guid: 9b77145771b3d1341a22967fdf5148d8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -30,10 +30,10 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 32
+    spritePixelsToUnits: 64
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638597595440012079
+  platformSettingsDirtyTick: 638599235176028504
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,9 +119,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Sprite-0003
+  - name: sirdumppy
     originalName: 
-    pivot: {x: 0.51724136, y: 0}
+    pivot: {x: 0.51724136, y: -0.041666668}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -129,8 +129,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 29
-      height: 27
-    spriteID: c912868ccfeef3a4bb90165a05856943
+      height: 24
+    spriteID: d2eadd0e60f37a04b87ee6c7adbd625e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,21 +142,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -572920417
-    name: Sprite-0003
+    guid: 1106219245
+    name: sirdumppy
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Sprite-0003
+    - name: sirdumppy
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 1
-        y: 0
+        y: 1
         width: 29
-        height: 27
-      spriteId: c912868ccfeef3a4bb90165a05856943
+        height: 24
+      spriteId: d2eadd0e60f37a04b87ee6c7adbd625e
     linkedCells: []
     parentIndex: -1
   platformSettings:

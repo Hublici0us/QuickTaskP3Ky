@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
         
         if (horizontal >= 0)
         {
-            playerSprite.flipX = true;
+            playerSprite.flipX = false;
         }
         else
         {
-            playerSprite.flipX= false;
+            playerSprite.flipX= true;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
