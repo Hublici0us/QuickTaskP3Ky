@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class MrsBeanCollider : MonoBehaviour
 {
     public Button endButton;
+    public bool inside;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        inside = false;
     }
 
     // Update is called once per frame
@@ -19,13 +20,21 @@ public class MrsBeanCollider : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        endButton.gameObject.SetActive(true);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            endButton.gameObject.SetActive(true);
+            inside = true;
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        endButton.gameObject.SetActive(false);
+        if (other.gameObject.CompareTag("Player"))
+        { 
+            endButton.gameObject.SetActive(false);
+        }
+        
     }
 }

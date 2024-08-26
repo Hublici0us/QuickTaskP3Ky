@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     public GameObject pauseScreen;
+    public GameObject winScreen;
     private GameObject player;
+
+    public AudioClip winSound;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +49,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f;
         pauseScreen.SetActive(true);
         pausedGame=true;
-        audioSource.pitch = 0.85f;
+        audioSource.pitch = 0.95f;
+        audioSource.spatialBlend = 0.6f;
     }
 
     public void UnpauseGame()
@@ -55,6 +59,13 @@ public class GameManager : MonoBehaviour
         pauseScreen.SetActive(false);
         pausedGame=false;
         audioSource.pitch=1.0f;
+    }
+
+    public void win()
+    {
+        winScreen.SetActive(true);
+        audioSource.Stop();
+        audioSource.PlayOneShot(winSound);
     }
 
     public void BackToMainMenu()

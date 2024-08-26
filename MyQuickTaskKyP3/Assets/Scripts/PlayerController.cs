@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse) ;
            isOnGround = false ;
+           
 
         }
        
