@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,22 +12,26 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseScreen;
     public GameObject winScreen;
-    private GameObject player;
+    public TextMeshProUGUI lives;
+    private PlayerController player;
+    private GameObject playerSprite;
 
     public AudioClip winSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        UpdateHealth();
         pausedGame = false;
-        player = GameObject.Find("Player").gameObject;
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
         audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
+        playerSprite = GameObject.Find("Player").gameObject;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        playerCamera.transform.position = new Vector3(playerSprite.transform.position.x, playerSprite.transform.position.y + 7, -10);
     }
 
     private void Update()
@@ -68,6 +73,10 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(winSound);
     }
 
+    public void UpdateHealth()
+    {
+        lives.text = ("LIVES: " + player.lives);
+    }
     public void BackToMainMenu()
     {
 
