@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer playerSprite;
     Rigidbody2D playerRb;
     GameManager gameManager;
+    AudioSource playerAudio;
+
+    public AudioClip hitSFX;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         playerRb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,12 +72,15 @@ public class PlayerController : MonoBehaviour
         {
             lives -= 1;
             Destroy(collision.gameObject);
+            playerAudio.PlayOneShot(hitSFX);
 
             if (lives == 0)
             {
                 Destroy(gameObject);
+                gameManager.GameOver();
             }
-            gameManager.UpdateHealth();
+
+            gameManager.UpdateHealth(lives);
             
         }
 

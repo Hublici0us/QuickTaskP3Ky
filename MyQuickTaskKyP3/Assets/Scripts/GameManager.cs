@@ -2,30 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private bool pausedGame;
+
+    public GameObject soySauce;
 
     public Camera playerCamera;
     private AudioSource audioSource;
 
     public GameObject pauseScreen;
     public GameObject winScreen;
-    public TextMeshProUGUI lives;
+    public TextMeshProUGUI textlives;
     private PlayerController player;
-    private GameObject playerSprite;
+    public GameObject playerSprite;
+    public GameObject gameOver;
 
     public AudioClip winSound;
+    public AudioClip blowUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        UpdateHealth();
+        UpdateHealth(3);
         pausedGame = false;
         player = GameObject.Find("Player").GetComponent<PlayerController>();
-        audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
-        playerSprite = GameObject.Find("Player").gameObject;
+        audioSource = GetComponent<AudioSource>();
+        InvokeRepeating("spawnSauce", 2, 0.5f);
     }
 
     // Update is called once per frame
@@ -71,16 +76,32 @@ public class GameManager : MonoBehaviour
         winScreen.SetActive(true);
         audioSource.Stop();
         audioSource.PlayOneShot(winSound);
+        audioSource.PlayOneShot(blowUp);
+        CancelInvoke("spawnSauce");
     }
 
-    public void UpdateHealth()
+    public void UpdateHealth(int lives)
     {
-        lives.text = ("LIVES: " + player.lives);
+        textlives.text = "LIVES: " + lives;
     }
     public void BackToMainMenu()
     {
 
     }
 
-    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void GameOver()
+    {
+        gameOver.gameObject.SetActive(true);
+        CancelInvoke("spawnSauce");
+    }
+
+    void spawnSauce()
+    {
+        Instantiate(soySauce, new Vector3(Random.Range(-22, 30), 45, 0), Quaternion.identity);
+    }
 }
