@@ -152,6 +152,7 @@ ScriptedImporter:
     cells:
     - name: tacoMiguel
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 2
